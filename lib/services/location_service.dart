@@ -1,0 +1,3 @@
+import 'package:geolocator/geolocator.dart';
+import 'package:geocoding/geocoding.dart';
+class LocationService { Future<Map<String,Object?>?> capture() async { if(!await Geolocator.isLocationServiceEnabled()) return null; var p=await Geolocator.checkPermission(); if(p==LocationPermission.denied) p=await Geolocator.requestPermission(); if(p==LocationPermission.denied||p==LocationPermission.deniedForever)return null; final pos=await Geolocator.getCurrentPosition(); String address=''; try {final x=await placemarkFromCoordinates(pos.latitude,pos.longitude); if(x.isNotEmpty) address='${x.first.street}, ${x.first.locality}, ${x.first.administrativeArea}';}catch(_){ } return {'lat':pos.latitude,'lng':pos.longitude,'address':address}; } }

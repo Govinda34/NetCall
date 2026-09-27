@@ -1,0 +1,2 @@
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+class NotificationService { final plugin=FlutterLocalNotificationsPlugin(); Future<void> init() async { const a=AndroidInitializationSettings('@mipmap/ic_launcher'); await plugin.initialize(const InitializationSettings(android:a)); } Future<void> show(String title,String body) async { await plugin.show(DateTime.now().millisecondsSinceEpoch%100000, title, body, const NotificationDetails(android:AndroidNotificationDetails('reminders','Reminders',importance:Importance.high))); } }
