@@ -97,7 +97,7 @@ class _MasterScreenState extends State<MasterScreen> {
                             if (v == 'e') {
                               form(r);
                             } else {
-                              await repo.delete(widget.table, 'id = ?', [r['id']]);
+                              await repo.delete(widget.table, r['id'] as int);
                               setState(() {});
                             }
                           },
