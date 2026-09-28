@@ -116,7 +116,7 @@ class _WorkEntryScreenState extends State<WorkEntryScreen> {
     if (widget.editId == null) {
       await repo.insert('work_entries', data);
     } else {
-      await repo.update('work_entries', data, widget.editId!);
+      await repo.update('work_entries', data, 'id = ?', [widget.editId]);
     }
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Entry saved successfully')));

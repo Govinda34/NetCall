@@ -4,8 +4,8 @@ import '../repositories/app_repo.dart';
 import 'master_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  final VoidCallback toggleTheme;
-  const HomeScreen({super.key, required this.toggleTheme});
+  final VoidCallback onToggleTheme;
+  const HomeScreen({super.key, required this.onToggleTheme});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
       key: ValueKey(_refreshKey),
       repo: repo,
       refresh: _refresh,
-      toggle: widget.toggleTheme,
+      toggle: widget.onToggleTheme,
     );
   }
 }

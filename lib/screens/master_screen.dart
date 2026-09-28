@@ -45,7 +45,7 @@ class _MasterScreenState extends State<MasterScreen> {
               if (r == null) {
                 await repo.insert(widget.table, map);
               } else {
-                await repo.update(widget.table, map, r['id'] as int);
+                await repo.update(widget.table, map, 'id = ?', [r['id']]);
               }
               if (mounted) {
                 Navigator.pop(context);
@@ -97,7 +97,7 @@ class _MasterScreenState extends State<MasterScreen> {
                             if (v == 'e') {
                               form(r);
                             } else {
-                              await repo.delete(widget.table, r['id'] as int);
+                              await repo.delete(widget.table, 'id = ?', [r['id']]);
                               setState(() {});
                             }
                           },
